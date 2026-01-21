@@ -1,0 +1,8 @@
+{
+  "name": "Burger Sem Glúten - Landing Page de Alta Conversão",
+  "description": "Uma página de vendas otimizada para a venda de uma receita de hambúrguer caseiro sem glúten, com foco em gatilhos mentais e design moderno.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}
