@@ -20,7 +20,12 @@ const AISupport: React.FC = () => {
     setLoading(true);
 
     try {
-      const ai = new GoogleGenAI({ apiKey: process.env.API_KEY || '' });
+      const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
+      if (!apiKey) {
+        throw new Error('API key not configured');
+      }
+
+      const ai = new GoogleGenAI({ apiKey });
       const response = await ai.models.generateContent({
         model: 'gemini-3-flash-preview',
         contents: userMsg,
@@ -29,7 +34,7 @@ const AISupport: React.FC = () => {
           temperature: 0.7,
         }
       });
-      
+
       const botResponse = response.text || "Desculpe, tive um problema para processar sua dúvida. Pode tentar novamente?";
       setMessages(prev => [...prev, {role: 'bot', text: botResponse}]);
     } catch (error) {
